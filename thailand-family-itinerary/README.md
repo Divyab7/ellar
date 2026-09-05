@@ -27,3 +27,7 @@ Web image hosts are not reachable from the build environment, so photos are embe
 3. Run `python3 embed_photos.py`. Photos are resized, compressed and embedded into `index.html` as data URIs; placeholders disappear automatically.
 
 Use photos you have the right to publish: your own, the hotels' and attractions' press kits, or openly licensed ones (Wikimedia Commons, Unsplash, Pexels) with credit where the licence asks for it.
+
+## Quotation PDF
+
+`quotation.html` is the print layout of the same content in the format of the original Lurws quotation. Regenerate the PDF with Playwright (`page.pdf`, A4, print backgrounds); the output is `Lurws_Quotation_Thailand_v2.pdf`.
