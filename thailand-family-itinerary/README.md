@@ -6,15 +6,16 @@ Customer-facing itinerary experience for Lurws Group, ref LG/TH/0926/01.
 - Prepared by B Prudhivi Raj, Travel Operations
 - Source: `Lurws_Quotation_Thailand.pdf` (the quotation this page expands on)
 
-`index.html` is a single self-contained page:
+`index.html` is a single self-contained, mobile-first page:
 
-- Generative sea hero with a live countdown to departure
-- Sticky glass navigation with scroll progress and active section
-- Animated route map, September weather and group facts
-- Day-by-day program with timings, meals, rain plans and coordinator notes, revealed on scroll
-- Hotel category cards linked to a live package builder with add-on switches and animated totals
-- "Send this package" form that stores the family's choice in the artifact database when published on claude.ai, with a clipboard fallback elsewhere
-- Pre-departure checklist with progress ring (saved per device), THB/INR converter, coordination timeline, terms
+- Hero with dates, group size, "from" price and two actions
+- Postcards gallery (photo slots, see below)
+- Five collapsible day cards with timed plans, meals, rain plans and "taken care of" notes
+- Hotel category switch (3 / 4 / 5 star, 4 recommended) wired to the price panel
+- Four add-on checkboxes with per-person and family totals
+- Included / not included, six "good to know" items, three booking steps, cancellation and the 6-day option
+- "Send your choice" form that stores the family's pick in the artifact database on claude.ai, with a clipboard fallback elsewhere
+- Motion limited to feedback: accordions, checkboxes, the category switch and a mobile confirm bar
 
 Prices are indicative ranges and must be reconfirmed with the airline group desk and hotels before booking.
 
