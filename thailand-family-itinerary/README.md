@@ -6,16 +6,15 @@ Customer-facing itinerary experience for Lurws Group, ref LG/TH/0926/01.
 - Prepared by B Prudhivi Raj, Travel Operations
 - Source: `Lurws_Quotation_Thailand.pdf` (the quotation this page expands on)
 
-`index.html` is a single self-contained, mobile-first page:
+`index.html` is a single self-contained, mobile-first page in a plain white-and-blue brochure style:
 
-- Hero with dates, group size, "from" price and two actions
-- Postcards gallery (photo slots, see below)
-- Five collapsible day cards with timed plans, meals, rain plans and "taken care of" notes
-- Hotel category switch (3 / 4 / 5 star, 4 recommended) wired to the price panel
-- Four add-on checkboxes with per-person and family totals
-- Included / not included, six "good to know" items, three booking steps, cancellation and the 6-day option
-- "Send your choice" form that stores the family's pick in the artifact database on claude.ai, with a clipboard fallback elsewhere
-- Motion limited to feedback: accordions, checkboxes, the category switch and a mobile confirm bar
+- Cover photo slot, title, dates, "from" price and one button
+- Five days as short plain-language blocks with one rain note
+- Postcards grid (photo slots); tapping a picture shows a one-line fun fact
+- One control: 3 / 4 / 5 star hotel level, which updates the hotel names and price
+- Add-ons as a plain price list, included / not included lists, five "good to know" lines with the live time in Thailand
+- Three booking steps with cancellation, the 6-day option and price notes behind "+" links
+- "Send us your choice" form that stores the pick in the artifact database on claude.ai, with a clipboard fallback elsewhere
 
 Prices are indicative ranges and must be reconfirmed with the airline group desk and hotels before booking.
 
@@ -23,7 +22,7 @@ Prices are indicative ranges and must be reconfirmed with the airline group desk
 
 Web image hosts are not reachable from the build environment, so photos are embedded from local files:
 
-1. Put JPG or PNG files in `photos/`, named by slot: `hero`, `day1` … `day5` (day banners), `sanctuary`, `korlarn`, `traimit`, `watpho`, `safari`, `pattaya`, `watarun` (postcards).
+1. Put JPG or PNG files in `photos/`, named by slot: `hero`, `sanctuary`, `korlarn`, `traimit`, `watpho`, `safari`, `pattaya`, `watarun` (postcards).
 2. Optionally add `photos/credits.txt`, one credit line per photo.
 3. Run `python3 embed_photos.py`. Photos are resized, compressed and embedded into `index.html` as data URIs; placeholders disappear automatically.
 
