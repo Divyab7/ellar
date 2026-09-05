@@ -297,6 +297,31 @@
   .sig b { color: var(--ink); }
   .sig .hand { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: 1.5rem; color: var(--sea); line-height: 1; }
 
+  /* ===== photos ===== */
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .shot { position: relative; aspect-ratio: 4 / 3; border-radius: 18px; overflow: hidden; margin: 0; background: var(--sea); box-shadow: var(--shadow); isolation: isolate; }
+  .shot.wide { grid-column: span 2; aspect-ratio: 8 / 3; }
+  .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
+  .shot:hover img { transform: scale(1.06); }
+  .shot img[hidden] { display: none; }
+  .shot .cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 16px 14px; background: linear-gradient(transparent, rgba(6,27,34,.85)); color: #F2F8F7; font-size: .9rem; }
+  .shot .cap b { display: block; font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.05rem; }
+  .shot .cap span { opacity: .8; font-size: .8rem; }
+  .shot.ph::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, var(--sea) 0%, var(--sea-2) 55%, var(--lagoon) 100%); }
+  .shot.ph::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 20%, rgba(243,210,124,.5), transparent 45%), repeating-linear-gradient(-30deg, rgba(255,255,255,.05) 0 2px, transparent 2px 14px); }
+  .shot.ph .cap { z-index: 1; }
+  .shot.ph .badge { position: absolute; top: 12px; left: 12px; z-index: 1; font-family: "IBM Plex Mono", monospace; font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; padding: 4px 8px; border-radius: 999px; background: rgba(255,255,255,.18); color: #fff; backdrop-filter: blur(6px); }
+  .banner img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+  .banner.has-photo { isolation: isolate; }
+  .banner.has-photo::before { background: linear-gradient(90deg, rgba(6,27,34,.82) 0%, rgba(6,27,34,.55) 55%, rgba(6,27,34,.25) 100%); }
+  .banner.has-photo, .banner.has-photo .eyebrow, .banner.has-photo .where { color: #F2F8F7; }
+  .banner.has-photo .meal { border-color: rgba(255,255,255,.35); } .banner.has-photo .meal.on { background: rgba(255,255,255,.92); color: #0A3D4A; }
+  .hero-photo { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+  .hero.has-photo canvas { opacity: .55; mix-blend-mode: screen; }
+  .credits { font-size: .78rem; color: var(--ink-3); margin-top: 10px; max-width: 80ch; }
+  @media (max-width: 960px) { .gallery { grid-template-columns: 1fr 1fr; } .shot.wide { grid-column: span 2; } }
+  @media (max-width: 600px) { .gallery { grid-template-columns: 1fr; } .shot.wide { grid-column: span 1; aspect-ratio: 4 / 3; } }
+
   @media (max-width: 960px) {
     .hero-in { grid-template-columns: 1fr; gap: 28px; padding-top: 36px; }
     .page { padding: 56px 18px 80px; gap: 80px; }
@@ -316,6 +341,7 @@
 
 <header class="hero" id="top">
   <canvas id="sea" aria-hidden="true"></canvas>
+  <span data-photo="hero" data-mode="hero" hidden></span>
   <div class="mast">
     <div class="brand">LURWS GROUP <span>Travel Operations</span></div>
     <div class="mast-meta"><span>Ref LG/TH/0926/01</span><span>Prepared 05 Sep 2026</span><span>Valid till 08 Sep 2026</span><span>By B Prudhivi Raj</span></div>
@@ -350,7 +376,7 @@
 
 <div class="navwrap">
   <nav class="nav" aria-label="Sections">
-    <a href="#route">Route</a><a href="#days">Days</a><a href="#hotels">Hotels</a><a href="#price">Package</a><a href="#incl">Inclusions</a><a href="#prep">Before you fly</a><a href="#money">Money</a><a href="#plan">Plan</a><a href="#terms">Terms</a>
+    <a href="#route">Route</a><a href="#postcards">Postcards</a><a href="#days">Days</a><a href="#hotels">Hotels</a><a href="#price">Package</a><a href="#incl">Inclusions</a><a href="#prep">Before you fly</a><a href="#money">Money</a><a href="#plan">Plan</a><a href="#terms">Terms</a>
   </nav>
 </div>
 
@@ -402,6 +428,25 @@
     </div>
   </section>
 
+  <!-- ===== POSTCARDS ===== -->
+  <section id="postcards" class="rv">
+    <header>
+      <span class="eyebrow">Postcards</span>
+      <h2>What you'll <em class="acc">see</em></h2>
+      <p>The places on this itinerary, in the order you'll meet them.</p>
+    </header>
+    <div class="gallery">
+      <figure class="shot ph wide" data-photo="sanctuary" data-mode="shot"><span class="badge">Photo slot</span><img alt="Sanctuary of Truth, the hand-carved teak temple on the Pattaya seafront" hidden><figcaption class="cap"><b>Sanctuary of Truth</b><span>Day 1 · Pattaya seafront</span></figcaption></figure>
+      <figure class="shot ph" data-photo="korlarn" data-mode="shot"><span class="badge">Photo slot</span><img alt="Coral Island beach with clear water and speedboats" hidden><figcaption class="cap"><b>Coral Island</b><span>Day 2 · private speedboat</span></figcaption></figure>
+      <figure class="shot ph" data-photo="traimit" data-mode="shot"><span class="badge">Photo slot</span><img alt="The solid gold Buddha at Wat Traimit" hidden><figcaption class="cap"><b>Wat Traimit</b><span>Day 3 · Golden Buddha</span></figcaption></figure>
+      <figure class="shot ph" data-photo="watpho" data-mode="shot"><span class="badge">Photo slot</span><img alt="The Reclining Buddha at Wat Pho" hidden><figcaption class="cap"><b>Wat Pho</b><span>Day 3 · Reclining Buddha</span></figcaption></figure>
+      <figure class="shot ph" data-photo="safari" data-mode="shot"><span class="badge">Photo slot</span><img alt="Giraffes at Safari World, Bangkok" hidden><figcaption class="cap"><b>Safari World</b><span>Day 4 · drive-through safari</span></figcaption></figure>
+      <figure class="shot ph" data-photo="pattaya" data-mode="shot"><span class="badge">Photo slot</span><img alt="Pattaya Beach Road at dusk" hidden><figcaption class="cap"><b>Pattaya Beach Road</b><span>Day 1 · evening by the sea</span></figcaption></figure>
+      <figure class="shot ph wide" data-photo="watarun" data-mode="shot"><span class="badge">Photo slot</span><img alt="Wat Arun lit up at night from the Chao Phraya river" hidden><figcaption class="cap"><b>Chao Phraya at night</b><span>Day 4 · dinner cruise past Wat Arun</span></figcaption></figure>
+    </div>
+    <p class="credits" id="credits" hidden></p>
+  </section>
+
   <!-- ===== DAYS ===== -->
   <section id="days">
     <header class="rv">
@@ -412,7 +457,7 @@
     <div class="days">
 
       <article class="day rv">
-        <div class="banner b-sea">
+        <div class="banner b-sea" data-photo="day1" data-mode="banner">
           <div class="dnum">15<small>Sep · Tue</small></div>
           <div><span class="eyebrow">Day 1 · Arrival</span><h3>Bangalore → Bangkok → Pattaya</h3><div class="where">Night flight, coach to the coast, first evening by the sea</div><div class="meals"><span class="meal">B</span><span class="meal">L</span><span class="meal">D</span></div></div>
           <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 40 L56 24"/><path d="M22 36 L14 20 L20 20 L34 32"/><path d="M40 30 L52 12 L58 12 L50 34"/><path d="M12 46 L30 42"/><path d="M6 52 h52"/></svg>
@@ -434,7 +479,7 @@
       </article>
 
       <article class="day rv">
-        <div class="banner b-sand">
+        <div class="banner b-sand" data-photo="day2" data-mode="banner">
           <div class="dnum">16<small>Sep · Wed</small></div>
           <div><span class="eyebrow">Day 2 · Beach</span><h3>Pattaya → Coral Island (Koh Larn)</h3><div class="where">Private speedboat, beach and island lunch, evening market</div><div class="meals"><span class="meal on">B</span><span class="meal on">L</span><span class="meal">D</span></div></div>
           <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 40 h44 l-6 10 H16 z"/><path d="M20 40 V22 h18 l6 10 v8"/><path d="M28 22 V14"/><path d="M6 56 c4-3 8-3 12 0 s8 3 12 0 8-3 12 0 8 3 12 0"/></svg>
@@ -456,7 +501,7 @@
       </article>
 
       <article class="day rv">
-        <div class="banner b-gold">
+        <div class="banner b-gold" data-photo="day3" data-mode="banner">
           <div class="dnum">17<small>Sep · Thu</small></div>
           <div><span class="eyebrow">Day 3 · Temples</span><h3>Pattaya → Bangkok city and temples</h3><div class="where">Golden Buddha, Reclining Buddha, Pratunam evening</div><div class="meals"><span class="meal on">B</span><span class="meal">L</span><span class="meal">D</span></div></div>
           <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M32 6 L34 14 H30 z"/><path d="M22 26 L32 14 L42 26"/><path d="M16 36 L32 24 L48 36"/><path d="M20 36 V52 M44 36 V52 M32 36 V52"/><path d="M12 52 h40"/><path d="M8 58 h48"/></svg>
@@ -479,7 +524,7 @@
       </article>
 
       <article class="day rv">
-        <div class="banner b-leaf">
+        <div class="banner b-leaf" data-photo="day4" data-mode="banner">
           <div class="dnum">18<small>Sep · Fri</small></div>
           <div><span class="eyebrow">Day 4 · Safari</span><h3>Safari World and Marine Park</h3><div class="where">Drive-through safari, four shows, buffet lunch, river cruise evening</div><div class="meals"><span class="meal on">B</span><span class="meal on">L</span><span class="meal">D</span></div></div>
           <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 56 V30 l6-14 6 6 4-10 6 6 4-10 6 14 V56"/><path d="M14 40 h32"/><circle cx="24" cy="48" r="2"/><circle cx="40" cy="48" r="2"/><path d="M8 56 h48"/></svg>
@@ -502,7 +547,7 @@
       </article>
 
       <article class="day rv">
-        <div class="banner b-dusk">
+        <div class="banner b-dusk" data-photo="day5" data-mode="banner">
           <div class="dnum">19<small>Sep · Sat</small></div>
           <div><span class="eyebrow">Day 5 · Home</span><h3>Bangkok → Bangalore</h3><div class="where">Last shopping, late check-out, evening flight</div><div class="meals"><span class="meal on">B</span><span class="meal">L</span><span class="meal">D</span></div></div>
           <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M56 24 L8 40"/><path d="M42 28 L50 44 L44 44 L30 32"/><path d="M24 34 L12 52 L6 52 L14 30"/><path d="M52 18 L34 22"/><path d="M6 58 h52"/></svg>

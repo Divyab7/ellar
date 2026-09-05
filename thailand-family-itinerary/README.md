@@ -17,3 +17,13 @@ Customer-facing itinerary experience for Lurws Group, ref LG/TH/0926/01.
 - Pre-departure checklist with progress ring (saved per device), THB/INR converter, coordination timeline, terms
 
 Prices are indicative ranges and must be reconfirmed with the airline group desk and hotels before booking.
+
+## Adding photos
+
+Web image hosts are not reachable from the build environment, so photos are embedded from local files:
+
+1. Put JPG or PNG files in `photos/`, named by slot: `hero`, `day1` … `day5` (day banners), `sanctuary`, `korlarn`, `traimit`, `watpho`, `safari`, `pattaya`, `watarun` (postcards).
+2. Optionally add `photos/credits.txt`, one credit line per photo.
+3. Run `python3 embed_photos.py`. Photos are resized, compressed and embedded into `index.html` as data URIs; placeholders disappear automatically.
+
+Use photos you have the right to publish: your own, the hotels' and attractions' press kits, or openly licensed ones (Wikimedia Commons, Unsplash, Pexels) with credit where the licence asks for it.
